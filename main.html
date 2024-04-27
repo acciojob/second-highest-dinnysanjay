@@ -9,21 +9,21 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			if(arr.length<2){
-				return -Infinity;
-			}
-			let first;
-			let second;
-			let current=0;
-			arr.forEach((item,i)=>{
-				if(item>first){
-					first=current
-				}else if(item<first && item>second){
-					second=current
-				}
-			})
-		}
+    if(arr.length < 2 || [...new Set(arr)].length === 1){
+        return -Infinity;
+    }
+    let first = -Infinity;
+    let second = -Infinity;
+    arr.forEach((item) => {
+        if(item > first){
+            second = first;
+            first = item;
+        }else if(item < first && item > second){
+            second = item;
+        }
+    });
+    return second;
+}
 
 		function Main() {
 			//var n = prompt("Enter the number of elements");
